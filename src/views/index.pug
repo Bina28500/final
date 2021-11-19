@@ -1,0 +1,225 @@
+doctype html
+head
+  meta(charset='UTF-8')
+  meta(http-equiv='X-UA-Compatible' content='IE=edge')
+  meta(name='viewport' content='width=device-width, initial-scale=1.0')
+  title GetRepositories
+  style.
+    .container{
+    margin: 0 auto;
+    width: 1200px;
+    }
+    .button{
+    display: block;
+    margin: 20px auto;
+    padding: 15px;
+    background: linear-gradient(to bottom, #2f03f1, #cbbff0);
+    }
+    .button:hover{
+    background: linear-gradient(to bottom, #2001a8, #b7a3f5);
+    cursor: pointer;
+    }
+    .mainWindow{
+    position: relative;
+    margin: 0 auto;
+    width: 600px;
+    height: 500px;
+    border: 2px solid gray;
+    overflow-y: scroll;
+    }
+    .count{
+    margin: 0;
+    }
+    .count-conteiner{
+    display: flex;
+    justify-content: space-between;
+    }
+    .count-out{
+    position: relative;
+    display: none;
+    height: 70px;
+    margin: 0 auto;
+    width: 600px;
+    }
+    .count-out1{
+    height: 70px;
+    margin: 0 auto;
+    width: 600px;
+    text-align: center;
+    }
+    .explanation{
+    margin-top: 10px;
+    }
+    .text{
+    font-weight: bold;
+    }
+    .list-item{
+    padding: 2px 0 2px 10px;
+    margin: 0;
+    }
+    .list-item:hover{
+    color: blue;
+    cursor: pointer;
+    }
+    .new-window{
+    position: absolute;
+    top: 0;
+    left: -2px;
+    z-index: 2;
+    width: 600px;
+    height: 600px;
+    border: 2px solid gray;
+    background-color: white;
+    overflow-y: scroll;
+    overflow-x: hidden;
+    }
+    .new-window-top{
+    height: 30px;
+    margin: 0 auto;
+    width: 600px;
+    }
+    .new-window-close{
+    position: absolute;
+    z-index: 4;
+    top: 20px;
+    right: 20px;
+    font-size: 30px;
+    font-weight: bold;
+    color: rgb(194, 189, 189);
+    cursor: pointer;
+    }
+    .status{
+      position: absolute;
+      top: 120px;
+      left: 250px;
+      font-size: 20px;
+      z-index: 6;
+    }
+    
+main
+  section.container
+    button.button &Pcy;&ocy;&lcy;&ucy;&chcy;&icy;&tcy;&softcy; &scy;&pcy;&icy;&scy;&ocy;&kcy; &rcy;&iecy;&pcy;&ocy;&zcy;&icy;&tcy;&ocy;&rcy;&icy;&iecy;&vcy; &scy; &acy;&kcy;&kcy;&acy;&ucy;&ncy;&tcy;&acy; Node.js
+    .count-out
+      .count-conteiner
+        p.count.text &Pcy;&ocy;&lcy;&ucy;&chcy;&iecy;&ncy;&ocy; 60 &rcy;&iecy;&pcy;&ocy;&zcy;&icy;&tcy;&ocy;&rcy;&icy;&iecy;&vcy;
+        .filter
+          input.sha(type='radio' name='a')
+          b sha
+          input.message(type='radio' name='a' checked='')
+          b message
+      .explanation
+        i
+          | &IEcy;&scy;&lcy;&icy; &vcy;&ycy; &khcy;&ocy;&tcy;&icy;&tcy;&iecy; &pcy;&ocy;&lcy;&ucy;&chcy;&icy;&tcy;&softcy; &khcy;&ecy;&shcy; &icy;&lcy;&icy; &kcy;&ocy;&mcy;&mcy;&icy;&tcy;&ycy; &scy; &ocy;&pcy;&rcy;&iecy;&dcy;&iecy;&lcy;&iecy;&ncy;&ncy;&ocy;&gcy;&ocy; &rcy;&iecy;&pcy;&ocy;&zcy;&icy;&tcy;&ocy;&rcy;&icy;&yacy;, &vcy;&ycy;&bcy;&iecy;&rcy;&iecy;&tcy;&iecy; 
+          b hash
+          |  &icy;&lcy;&icy; 
+          b commit
+          |  &scy;&ocy;&ocy;&tcy;&vcy;&iecy;&tcy;&scy;&tcy;&vcy;&iecy;&ncy;&ncy;&ocy; &icy; &kcy;&lcy;&icy;&kcy;&ncy;&icy;&tcy;&iecy; &ncy;&acy; &ncy;&ucy;&zhcy;&ncy;&ycy;&jcy; &rcy;&iecy;&pcy;&ocy;&zcy;&icy;&tcy;&ocy;&rcy;&icy;&jcy;
+    .count-out1
+      | &Scy; &pcy;&ocy;&mcy;&ocy;&shchcy;&softcy;&yucy; &ecy;&tcy;&ocy;&gcy;&ocy; &pcy;&rcy;&icy;&lcy;&ocy;&zhcy;&iecy;&ncy;&icy;&yacy; &vcy;&ycy; &mcy;&ocy;&zhcy;&iecy;&tcy;&iecy; &pcy;&ocy;&lcy;&ucy;&chcy;&icy;&tcy;&softcy; &pcy;&ocy;&lcy;&ncy;&ycy;&jcy; &scy;&pcy;&icy;&scy;&ocy;&kcy; &icy;&mcy;&iocy;&ncy; &rcy;&iecy;&pcy;&ocy;&zcy;&icy;&tcy;&ocy;&rcy;&icy;&iecy;&vcy; &scy; &acy;&kcy;&kcy;&acy;&ucy;&tcy;&acy; Node.js &ncy;&acy; GitHub, &acy; &tcy;&acy;&kcy;&zhcy;&iecy; &pcy;&ocy;&scy;&lcy;&iecy;&dcy;&ncy;&icy;&iecy; 25 hesh &icy;&lcy;&icy; commit &vcy; &lcy;&yucy;&bcy;&ocy;&mcy; &icy;&zcy; &rcy;&iecy;&pcy;&ocy;&zcy;&icy;&tcy;&ocy;&rcy;&icy;&iecy;&vcy;
+    .mainWindow
+script.
+  const button = document.querySelector('.button');
+  const countOut = document.querySelector('.count-out');
+  const mainWindow = document.querySelector('.mainWindow');
+  const countOut1 = document.querySelector('.count-out1');
+  button.addEventListener('click', queryRepositories);
+  function queryRepositories(event) {
+  document.querySelectorAll('.mainWindow p').forEach(item => {
+  item.remove();
+  });
+  let query1 = {name: 'repositories'};
+  async function queryRepos() {
+  let status = document.createElement('div');
+  status.classList.add('status');
+  status.textContent = 'Загрузка...';
+  mainWindow.append(status);
+  let response = await fetch('http://localhost:3000/getRep', {
+  method: 'POST',
+  headers: {
+  'Content-Type': 'application/json;charset=utf-8'
+  },
+  body: JSON.stringify(query1)
+  });
+  let json = await response.json();
+  console.log(json);
+  return json;
+  }
+  queryRepos().then(listRepositories => {
+  document.querySelector('.status').remove();
+  getRepositories(listRepositories);
+  });
+  }
+  function getRepositories(listRepositories) {
+  const count = document.querySelector('.count');
+  let countText = listRepositories.length;
+  listRepositories.forEach(item => {
+  let p = document.createElement('p');
+  p.classList = 'list-item';
+  p.textContent = item;
+  mainWindow.append(p);
+  count.textContent = `Получено ${countText} репозиториев`;
+  countOut.style.display = 'block';
+  countOut1.style.display = 'none';
+  })
+  }
+  mainWindow.addEventListener('click', queryContantOfRepositiry);
+  function queryContantOfRepositiry(event) {
+  if(event.target.tagName != 'P') return;
+  if(!event.target.closest('.mainWindow')) return;
+  let name = event.target.textContent;
+  let query = {
+  name: name,
+  prop: null
+  };
+  let radios = document.querySelectorAll('[type="radio"]');
+  radios.forEach(item => {
+  if(item.checked) {
+  query.prop = item.className;
+  }
+  });
+  async function putQueryCommit() {
+  let status = document.createElement('div');
+  status.classList.add('status');
+  status.textContent = 'Загрузка...';
+  mainWindow.append(status);
+  let response = await fetch('http://localhost:3000/getCom', {
+  method: 'POST',
+  headers: {
+  'Content-Type': 'application/json;charset=utf-8'
+  },
+  body: JSON.stringify(query)
+  });
+  let json = await response.json();
+  console.log(json);
+  return json;
+  }
+  putQueryCommit().then(arrContRepos => {
+   document.querySelector('.status').remove();
+  getContantOfRepositiry(arrContRepos);
+  });
+  }
+  function getContantOfRepositiry(arrContRepos) {
+  countRepos = arrContRepos.length;
+  let newWindow = document.createElement('div');
+  newWindow.classList = 'new-window';
+  let newWindowTop = document.createElement('div');
+  newWindowTop.classList = 'new-window-top';
+  newWindowTop.textContent = `Получено ${countRepos} результатов:`;
+  let newWindowClose = document.createElement('div');
+  newWindowClose.classList = 'new-window-close';
+  newWindowClose.textContent = '[X]';
+  console.log(arrContRepos);
+  arrContRepos.forEach(item => {
+  let pp = document.createElement('p');
+  pp.classList.add('list-item');
+  pp.textContent = item;
+  newWindow.append(pp);
+  })
+  countOut.append(newWindow);
+  newWindow.prepend(newWindowTop);
+  countOut.append(newWindowClose);
+  newWindowClose.onclick = function() {
+  newWindow.remove();
+  newWindowClose.remove();
+  }
+  }
