@@ -1,5 +1,4 @@
 import { Body, Controller, Get, Post, Render, Res} from '@nestjs/common';
-import { Data } from './dto/return-rep.dto';
 import { Repositories } from './repos.service';
 const async = require('async');
 
@@ -9,8 +8,9 @@ export class RepositoryController{
 
     }
 
-    @Post('/getRep')
-    getRep(@Body() rep: Data, @Res() res){
+    @Get('/getRep')
+    getRep(@Res() res){
+        //async series использовался вместо waterfall для масштабируемости приложения, если понадобятся промежуточные результаты
         async.series([
             (callback)=>{
                 this.RepService.clearRepArray();

@@ -11,6 +11,7 @@ export class CommitsController{
     }
     @Post('/getCom')
     getComMesOrHash(@Body() com: Data, @Res() res){
+        //async series использовался вместо waterfall для масштабируемости приложения, если понадобятся промежуточные результаты
           async.series([
             (callback)=>{
                 this.ComService.fullComArray(com.name, callback);

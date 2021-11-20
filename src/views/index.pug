@@ -107,15 +107,15 @@ main
           b sha
           input.message(type='radio' name='a' checked='')
           b message
-      .explanation
+       .explanation
         i
-          | &IEcy;&scy;&lcy;&icy; &vcy;&ycy; &khcy;&ocy;&tcy;&icy;&tcy;&iecy; &pcy;&ocy;&lcy;&ucy;&chcy;&icy;&tcy;&softcy; &khcy;&ecy;&shcy; &icy;&lcy;&icy; &kcy;&ocy;&mcy;&mcy;&icy;&tcy;&ycy; &scy; &ocy;&pcy;&rcy;&iecy;&dcy;&iecy;&lcy;&iecy;&ncy;&ncy;&ocy;&gcy;&ocy; &rcy;&iecy;&pcy;&ocy;&zcy;&icy;&tcy;&ocy;&rcy;&icy;&yacy;, &vcy;&ycy;&bcy;&iecy;&rcy;&iecy;&tcy;&iecy; 
+          | &IEcy;&scy;&lcy;&icy; &vcy;&ycy; &khcy;&ocy;&tcy;&icy;&tcy;&iecy; &pcy;&ocy;&lcy;&ucy;&chcy;&icy;&tcy;&softcy; &khcy;&ecy;&shcy; &icy;&lcy;&icy; &scy;&ocy;&ocy;&bcy;&shchcy;&iecy;&ncy;&icy;&iecy; &scy; &ocy;&pcy;&rcy;&iecy;&dcy;&iecy;&lcy;&iecy;&ncy;&ncy;&ocy;&gcy;&ocy; &rcy;&iecy;&pcy;&ocy;&zcy;&icy;&tcy;&ocy;&rcy;&icy;&yacy;, &vcy;&ycy;&bcy;&iecy;&rcy;&iecy;&tcy;&iecy; 
           b hash
           |  &icy;&lcy;&icy; 
-          b commit
+          b message
           |  &scy;&ocy;&ocy;&tcy;&vcy;&iecy;&tcy;&scy;&tcy;&vcy;&iecy;&ncy;&ncy;&ocy; &icy; &kcy;&lcy;&icy;&kcy;&ncy;&icy;&tcy;&iecy; &ncy;&acy; &ncy;&ucy;&zhcy;&ncy;&ycy;&jcy; &rcy;&iecy;&pcy;&ocy;&zcy;&icy;&tcy;&ocy;&rcy;&icy;&jcy;
     .count-out1
-      | &Scy; &pcy;&ocy;&mcy;&ocy;&shchcy;&softcy;&yucy; &ecy;&tcy;&ocy;&gcy;&ocy; &pcy;&rcy;&icy;&lcy;&ocy;&zhcy;&iecy;&ncy;&icy;&yacy; &vcy;&ycy; &mcy;&ocy;&zhcy;&iecy;&tcy;&iecy; &pcy;&ocy;&lcy;&ucy;&chcy;&icy;&tcy;&softcy; &pcy;&ocy;&lcy;&ncy;&ycy;&jcy; &scy;&pcy;&icy;&scy;&ocy;&kcy; &icy;&mcy;&iocy;&ncy; &rcy;&iecy;&pcy;&ocy;&zcy;&icy;&tcy;&ocy;&rcy;&icy;&iecy;&vcy; &scy; &acy;&kcy;&kcy;&acy;&ucy;&tcy;&acy; Node.js &ncy;&acy; GitHub, &acy; &tcy;&acy;&kcy;&zhcy;&iecy; &pcy;&ocy;&scy;&lcy;&iecy;&dcy;&ncy;&icy;&iecy; 25 hesh &icy;&lcy;&icy; commit &vcy; &lcy;&yucy;&bcy;&ocy;&mcy; &icy;&zcy; &rcy;&iecy;&pcy;&ocy;&zcy;&icy;&tcy;&ocy;&rcy;&icy;&iecy;&vcy;
+      | &Scy; &pcy;&ocy;&mcy;&ocy;&shchcy;&softcy;&yucy; &ecy;&tcy;&ocy;&gcy;&ocy; &pcy;&rcy;&icy;&lcy;&ocy;&zhcy;&iecy;&ncy;&icy;&yacy; &vcy;&ycy; &mcy;&ocy;&zhcy;&iecy;&tcy;&iecy; &pcy;&ocy;&lcy;&ucy;&chcy;&icy;&tcy;&softcy; &pcy;&ocy;&lcy;&ncy;&ycy;&jcy; &scy;&pcy;&icy;&scy;&ocy;&kcy; &icy;&mcy;&iocy;&ncy; &rcy;&iecy;&pcy;&ocy;&zcy;&icy;&tcy;&ocy;&rcy;&icy;&iecy;&vcy; &scy; &acy;&kcy;&kcy;&acy;&ucy;&tcy;&acy; Node.js &ncy;&acy; GitHub, &acy; &tcy;&acy;&kcy;&zhcy;&iecy; &pcy;&ocy;&scy;&lcy;&iecy;&dcy;&ncy;&icy;&iecy; 25 hash &icy;&lcy;&icy; message &vcy; &lcy;&yucy;&bcy;&ocy;&mcy; &icy;&zcy; &rcy;&iecy;&pcy;&ocy;&zcy;&icy;&tcy;&ocy;&rcy;&icy;&iecy;&vcy;
     .mainWindow
 script.
   const button = document.querySelector('.button');
@@ -127,18 +127,13 @@ script.
   document.querySelectorAll('.mainWindow p').forEach(item => {
   item.remove();
   });
-  let query1 = {name: 'repositories'};
   async function queryRepos() {
   let status = document.createElement('div');
   status.classList.add('status');
   status.textContent = 'Загрузка...';
   mainWindow.append(status);
   let response = await fetch(`https://tech-node.herokuapp.com/getRep`, {
-  method: 'POST',
-  headers: {
-  'Content-Type': 'application/json;charset=utf-8'
-  },
-  body: JSON.stringify(query1)
+  method: 'GET'
   });
   let json = await response.json();
   console.log(json);
