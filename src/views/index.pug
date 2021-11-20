@@ -132,7 +132,7 @@ script.
   status.classList.add('status');
   status.textContent = 'Загрузка...';
   mainWindow.append(status);
-  let response = await fetch(`http://localhost:3028/getRep`);
+  let response = await fetch(`https://tech-node.herokuapp.com/getRep`);
   let json = await response.json();
   console.log(json);
   return json;
@@ -175,7 +175,7 @@ script.
   status.classList.add('status');
   status.textContent = 'Загрузка...';
   mainWindow.append(status);
-  let response = await fetch(`http://localhost:3028/getCom`, {
+  let response = await fetch(`https://tech-node.herokuapp.com/getCom`, {
   method: 'POST',
   headers: {
   'Content-Type': 'application/json;charset=utf-8'
