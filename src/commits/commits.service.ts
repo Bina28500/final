@@ -3,7 +3,8 @@ const https = require('https');
 
 @Injectable()
 export class Commits{
-    commits = [];
+
+    private commits: {message: string, sha: string}[] = [];
 
     fullComArray(reposName, callback){
     let optionsForCom = {host: 'api.github.com', path: `/repos/nodejs/${reposName}/commits?per_page=25`, method: 'GET', headers: {'user-agent': 'node.js'}};

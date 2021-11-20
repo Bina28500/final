@@ -10,7 +10,6 @@ export class RepositoryController{
 
     @Get('/getRep')
     getRep(@Res() res){
-        //async series использовался вместо waterfall для масштабируемости приложения, если понадобятся промежуточные результаты
         async.series([
             (callback)=>{
                 this.RepService.clearRepArray();
@@ -20,8 +19,8 @@ export class RepositoryController{
                 this.RepService.fullRepArray(callback);
             },
             (callback)=>{
-                this.RepService.getRepNames();
-                callback(null, this.RepService.repositories);
+                let result = this.RepService.getRepNames();
+                callback(null, result);
             }
         ], (err, results)=>{
             if(err){

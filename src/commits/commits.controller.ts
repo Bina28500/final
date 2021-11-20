@@ -11,30 +11,29 @@ export class CommitsController{
     }
     @Post('/getCom')
     getComMesOrHash(@Body() com: Data, @Res() res){
-        //async series использовался вместо waterfall для масштабируемости приложения, если понадобятся промежуточные результаты
-          async.series([
+          async.waterfall([
             (callback)=>{
                 this.ComService.fullComArray(com.name, callback);
             },
-            (callback)=>{
+            (arg1, callback)=>{
                     let result = this.ComService.returnArray();
                     callback(null, result);
             },
-            (callback)=>{
+            (arg1, callback)=>{
                 let final;
                 if(com.prop == 'message'){
-                    final= this.ComService.getComMes(this.ComService.commits);
+                    final= this.ComService.getComMes(arg1);
                 } else{
-                    final = this.ComService.getComSha(this.ComService.commits);
+                    final = this.ComService.getComSha(arg1);
                 }
-                return callback(null, final);
+                 callback(null, final);
             }
-        ], function(err, results){
+        ], function(err, result){
             if(err){
                 throw new Error(err);
             } else{
-                console.log(results);
-                res.json(results[results.length-1]);
+                console.log(result);
+                res.json(result);
             }
         });
     }

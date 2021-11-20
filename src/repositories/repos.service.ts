@@ -4,7 +4,8 @@ const https = require('https');
 @Injectable()
 export class Repositories{
 
-    repositories: string[] = [];
+    private repositories: string[] = [];
+
     clearRepArray(){
         this.repositories = [];
     }
@@ -20,7 +21,7 @@ export class Repositories{
             json.forEach(item => {
                 this.repositories.push(item.name);
             });
-            callback(null, this.repositories);
+            callback(null, 'repository is full');
         });
       }).end();
         requestForRep.on('error', err=> {
