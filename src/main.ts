@@ -7,6 +7,6 @@ async function bootstrap() {
   const app = await NestFactory.create<NestExpressApplication>(AppModule);
   app.setBaseViewsDir(join(__dirname, '../src/views'));
   app.setViewEngine('pug');
-  await app.listen(process.env.PORT || 3000);
+  await app.listen(process.env.PORT || 3028);
 }
 bootstrap();
