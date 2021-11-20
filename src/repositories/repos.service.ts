@@ -1,5 +1,4 @@
 import { Injectable } from "@nestjs/common";
-import { callbackify } from "util";
 const https = require('https');
 
 @Injectable()
