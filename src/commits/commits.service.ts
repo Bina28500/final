@@ -32,6 +32,9 @@ export class Commits{
         let result = array.map(item=>{
             return item.message;
         });
+        if(array.length > 25){
+            result.length = 25;
+        }
         return result;
     }
     getComSha(array){
